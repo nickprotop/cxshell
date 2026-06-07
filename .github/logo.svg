@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 140">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e2840;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a14;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5aa9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#78b4ff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="winA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5aa9ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3d7fd6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="winB" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd93d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff9f43;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="140" rx="16" fill="url(#bg)" />
+
+  <!-- Border -->
+  <rect x="1" y="1" width="598" height="138" rx="15" fill="none" stroke="#2a3550" stroke-width="1.5" />
+
+  <!-- Desktop-in-a-terminal icon -->
+  <g transform="translate(34, 28)">
+    <!-- Outer screen / desktop frame -->
+    <rect x="0" y="0" width="62" height="48" rx="5" fill="none" stroke="url(#accent)" stroke-width="2.5" />
+    <!-- Stand -->
+    <line x1="31" y1="48" x2="31" y2="58" stroke="url(#accent)" stroke-width="2" />
+    <line x1="19" y1="58" x2="43" y2="58" stroke="url(#accent)" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Back window (offset, partly behind) -->
+    <rect x="22" y="12" width="30" height="22" rx="3" fill="url(#winB)" opacity="0.85" />
+    <rect x="22" y="12" width="30" height="6" rx="3" fill="#000000" opacity="0.18" />
+
+    <!-- Front window (overlapping) -->
+    <rect x="9" y="18" width="32" height="23" rx="3" fill="url(#winA)" />
+    <!-- Front window title bar -->
+    <rect x="9" y="18" width="32" height="6.5" rx="3" fill="#000000" opacity="0.22" />
+    <!-- Title-bar dots -->
+    <circle cx="13" cy="21.2" r="1.1" fill="#ffffff" opacity="0.85" />
+    <circle cx="17" cy="21.2" r="1.1" fill="#ffffff" opacity="0.55" />
+    <circle cx="21" cy="21.2" r="1.1" fill="#ffffff" opacity="0.55" />
+    <!-- Prompt glyph inside front window -->
+    <text x="13" y="36" font-family="monospace" font-size="9" font-weight="700" fill="#0a0a14">&gt;_</text>
+
+    <!-- Taskbar at the bottom of the screen -->
+    <rect x="4" y="42" width="54" height="2.5" rx="1.25" fill="#5aa9ff" opacity="0.45" />
+  </g>
+
+  <!-- cxshell text -->
+  <text x="120" y="82" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', 'Cascadia Code', Consolas, monospace" font-size="52" font-weight="700" letter-spacing="2">
+    <tspan fill="url(#accent)">cx</tspan><tspan fill="#e8e8e8">shell</tspan>
+  </text>
+
+  <!-- Tagline -->
+  <text x="122" y="108" font-family="'SF Mono', 'Fira Code', 'JetBrains Mono', Consolas, monospace" font-size="14" fill="#6a7a9a" letter-spacing="3">
+    TERMINAL DESKTOP
+  </text>
+
+  <!-- Terminal cursor blink -->
+  <rect x="392" y="62" width="3" height="28" fill="#5aa9ff" opacity="0.7">
+    <animate attributeName="opacity" values="0.7;0;0.7" dur="1.2s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- Decorative dots (terminal status) -->
+  <circle cx="540" cy="40" r="4" fill="#ff5f56" opacity="0.8" />
+  <circle cx="556" cy="40" r="4" fill="#ffbd2e" opacity="0.8" />
+  <circle cx="572" cy="40" r="4" fill="#27c93f" opacity="0.8" />
+</svg>
