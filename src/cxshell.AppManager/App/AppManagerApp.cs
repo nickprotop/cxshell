@@ -138,17 +138,15 @@ public sealed class AppManagerApp
         _statusLine = Ctl.StatusBar().Build();
         _statusLine.AddRightText("[grey50]F5[/] Refresh   [grey50]Enter[/] Open   [grey50]Esc[/] Quit");
 
-        // Full-screen, chromeless, fixed — the cxfiles/cxtop pattern for a standalone app.
+        // A normal, centered desktop window — the App Manager runs in-process inside the shell
+        // (not as a standalone full-surface app), so it keeps its title bar and is movable/
+        // resizable like the other apps.
         _window = new WindowBuilder(_ws)
-            .HideTitle()
-            .HideTitleButtons()
+            .WithTitle("App Manager")
             .WithBorderStyle(BorderStyle.Rounded)
             .WithBorderColor(Color.Grey27)
-            .Maximized()
-            .Movable(false)
-            .Resizable(false)
-            .Minimizable(false)
-            .Maximizable(false)
+            .WithSize(100, 32)
+            .Centered()
             .WithBackgroundGradient(gradient, GradientDirection.Vertical)
             .AddControl(tabs)
             .AddControl(grid)
@@ -161,7 +159,8 @@ public sealed class AppManagerApp
 
     private void OnKey(object? sender, KeyPressedEventArgs e)
     {
-        if (e.KeyInfo.Key == ConsoleKey.Escape) { _ws.Shutdown(0); e.Handled = true; }
+        // In-process: Esc closes the App Manager window (it must NOT shut down the host shell).
+        if (e.KeyInfo.Key == ConsoleKey.Escape) { _ws.CloseWindow(_window); e.Handled = true; }
         else if (e.KeyInfo.Key == ConsoleKey.F5) { _ = LoadAsync(); e.Handled = true; }
     }
 
