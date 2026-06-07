@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Conditional ConsoleEx reference: use local project if available, otherwise NuGet -->
+  <ItemGroup Condition="Exists('..\..\..\ConsoleEx\SharpConsoleUI\SharpConsoleUI.csproj')">
+    <ProjectReference Include="..\..\..\ConsoleEx\SharpConsoleUI\SharpConsoleUI.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="!Exists('..\..\..\ConsoleEx\SharpConsoleUI\SharpConsoleUI.csproj')">
+    <PackageReference Include="SharpConsoleUI" Version="2.4.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\cxshell.Apps\cxshell.Apps.csproj" />
+  </ItemGroup>
+
+  <!-- Shared desktop chrome -->
+  <ItemGroup>
+    <Compile Include="..\Shared\DesktopPanels.cs" Link="Shared\DesktopPanels.cs" />
+  </ItemGroup>
+
+  <!-- Embedded catalog (hardcoded repo now; swappable for an online index later) -->
+  <ItemGroup>
+    <EmbeddedResource Include="Catalog\catalog.json" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "apps": [
+    {
+      "id": "org.dotos.cxfiles",
+      "name": "Files",
+      "summary": "Explorer-style terminal file manager",
+      "descriptionHtml": "<h2>Files (cxfiles)</h2><p>A polished, Windows-Explorer-style file manager for the terminal: three-pane layout with folder tree, file list and detail panel; tabs; full file operations with background progress; a tabbed Properties dialog with live disk-usage; trash support; context menus and keyboard-driven navigation.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/cxfiles/master/.github/logo.svg",
+      "categories": ["System", "FileManager", "Utility"],
+      "group": "Applications",
+      "order": 10,
+      "homepage": "https://github.com/nickprotop/cxfiles",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary",
+          "uri": "binary+github-release:nickprotop/cxfiles?asset=cxfiles-linux-{arch}" },
+        { "kind": "source", "label": "Build from source",
+          "uri": "source+git:https://github.com/nickprotop/cxfiles?ref=master",
+          "build": { "steps": [ { "run": "dotnet publish cxfiles/cxfiles.csproj -c Release -o out --self-contained -r linux-{arch}" } ], "artifact": "out", "exe": "cxfiles", "net": true } }
+      ]
+    },
+    {
+      "id": "org.dotos.cxtop",
+      "name": "System Monitor",
+      "summary": "btop-style live system monitor",
+      "descriptionHtml": "<h2>System Monitor (cxtop)</h2><p>An ntop/btop-inspired terminal system monitor: live CPU, memory and network with graphs, gauges and sparklines.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/cxtop/main/.github/logo.svg",
+      "categories": ["System", "Monitor"],
+      "group": "System",
+      "order": 30,
+      "homepage": "https://github.com/nickprotop/cxtop",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary",
+          "uri": "binary+github-release:nickprotop/cxtop?asset=cxtop-linux-{arch}" },
+        { "kind": "source", "label": "Build from source",
+          "uri": "source+git:https://github.com/nickprotop/cxtop?ref=main",
+          "build": { "steps": [ { "run": "dotnet publish cxtop/cxtop.csproj -c Release -o out --self-contained -r linux-{arch}" } ], "artifact": "out", "exe": "cxtop", "net": true } }
+      ]
+    },
+    {
+      "id": "org.dotos.cxpost",
+      "name": "Mail",
+      "summary": "Terminal email client",
+      "descriptionHtml": "<h2>Mail (cxpost)</h2><p>A cross-platform terminal email client: IMAP/SMTP, folders, composing and reading mail in the terminal.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/cxpost/master/.github/logo.svg",
+      "categories": ["Network", "Email"],
+      "group": "Applications",
+      "order": 20,
+      "homepage": "https://github.com/nickprotop/cxpost",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary",
+          "uri": "binary+github-release:nickprotop/cxpost?asset=cxpost-linux-{arch}" }
+      ]
+    },
+    {
+      "id": "org.dotos.lazydotide",
+      "name": "LazyDotIDE",
+      "summary": "Lazygit-style .NET IDE for the terminal",
+      "descriptionHtml": "<h2>LazyDotIDE</h2><p>A keyboard-driven terminal IDE for .NET projects: build, run, navigate and manage your solution from the terminal.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/lazydotide/main/.github/logo.svg",
+      "categories": ["Development", "TextEditor"],
+      "group": "Accessories",
+      "order": 40,
+      "homepage": "https://github.com/nickprotop/lazydotide",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary",
+          "uri": "binary+github-release:nickprotop/lazydotide?asset=lazydotide-linux-{arch}" }
+      ]
+    },
+    {
+      "id": "org.dotos.lazynuget",
+      "name": "LazyNuGet",
+      "summary": "Terminal NuGet package manager",
+      "descriptionHtml": "<h2>LazyNuGet</h2><p>Browse, search, add and manage NuGet packages for your .NET projects from a fast terminal UI.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/lazynuget/main/.github/logo.svg",
+      "categories": ["Development", "Utility"],
+      "group": "Accessories",
+      "order": 50,
+      "homepage": "https://github.com/nickprotop/lazynuget",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary",
+          "uri": "binary+github-release:nickprotop/lazynuget?asset=lazynuget-linux-{arch}" }
+      ]
+    },
+    {
+      "id": "org.dotos.serverhub",
+      "name": "ServerHub",
+      "summary": "TUI server monitoring & management dashboard",
+      "descriptionHtml": "<h2>ServerHub</h2><p>A TUI server monitoring and management dashboard for Linux: real-time metrics, logs, and remote control from your terminal.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/ServerHub/main/.github/logo.svg",
+      "categories": ["System", "Monitor", "Network"],
+      "group": "System",
+      "order": 60,
+      "homepage": "https://github.com/nickprotop/ServerHub",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary (installer)",
+          "uri": "binary+github-release:nickprotop/ServerHub?installer=install.sh&uninstaller=uninstall.sh&exe=serverhub" },
+        { "kind": "source", "label": "Build from source",
+          "uri": "source+git:https://github.com/nickprotop/ServerHub?ref=main",
+          "build": { "steps": [ { "run": "dotnet publish ServerHub.csproj -c Release -o out --self-contained -r linux-{arch}" } ], "artifact": "out", "exe": "serverhub", "net": true } }
+      ]
+    }
+  ]
+}

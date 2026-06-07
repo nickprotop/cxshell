@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/cxshell.AppManager/cxshell.AppManager.csproj" />
+    <Project Path="src/cxshell.Apps/cxshell.Apps.csproj" />
+    <Project Path="src/cxshell.FileManager/cxshell.FileManager.csproj" />
+    <Project Path="src/cxshell.Settings/cxshell.Settings.csproj" />
+    <Project Path="src/cxshell.Terminal/cxshell.Terminal.csproj" />
+    <Project Path="src/cxshell/cxshell.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/cxshell.FileManager.Tests/cxshell.FileManager.Tests.csproj" />
+    <Project Path="tests/cxshell.Tests/cxshell.Tests.csproj" />
+  </Folder>
+</Solution>

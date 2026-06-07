@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- Pure .NET: manifest (.desktop) parsing, the app-source grammar, and installers.
+       No ConsoleEx dependency, so both the shell and the App Manager can share it. -->
+
+</Project>
