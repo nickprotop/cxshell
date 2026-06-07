@@ -37,6 +37,30 @@ public sealed class AppManagerApp
     private AppView? _selected;
     private bool _busy;
 
+    /// <summary>
+    /// Open the App Manager as an in-process window on the shell's window system (built-in entry,
+    /// like SettingsWindow.Open). Composes its services here — the standalone Program.cs is gone.
+    /// Does NOT run the event loop: the host shell already owns it.
+    /// </summary>
+    public static void Open(ConsoleWindowSystem ws)
+    {
+        ICatalogProvider catalog = new EmbeddedCatalogProvider();
+        var http = new HttpClient();
+        var store = new ManifestStore();
+        ISandbox sandbox = new BwrapSandbox();
+        var installers = new IInstaller[]
+        {
+            new ScriptInstaller(http),
+            new BinaryInstaller(http),
+            new SourceInstaller(sandbox),
+        };
+        var installer = new InstallManager(store, installers);
+        var state = new AppStateService(catalog, store, installer);
+
+        var app = new AppManagerApp(ws, state, installer);
+        app.OpenIn(ws);
+    }
+
     public AppManagerApp(ConsoleWindowSystem ws, AppStateService state, InstallManager installer)
     {
         _ws = ws;
@@ -44,13 +68,15 @@ public sealed class AppManagerApp
         _installer = installer;
     }
 
-    public async Task RunAsync()
+    /// <summary>Build the window on an already-running window system and start the initial load.
+    /// Used when the App Manager is hosted in-process by the shell (no own event loop).</summary>
+    public void OpenIn(ConsoleWindowSystem ws)
     {
         Build();
-        _ws.AddWindow(_window);
-        _ws.SetActiveWindow(_window);
-        await LoadAsync();
-        await Task.Run(() => _ws.Run());
+        ws.AddWindow(_window);
+        ws.SetActiveWindow(_window);
+        // Fire-and-forget the initial catalog load on the UI thread; the window is already shown.
+        _ = LoadAsync();
     }
 
     private void Build()
