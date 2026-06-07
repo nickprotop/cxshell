@@ -81,7 +81,8 @@ public sealed class AppManagerApp
 
     private void Build()
     {
-        var gradient = ColorGradient.FromColors(new Color(20, 25, 50), new Color(8, 8, 16));
+        // Match the cx app family palette (cxfiles): dark-blue vertical gradient.
+        var gradient = ColorGradient.FromColors(new Color(25, 32, 52), new Color(7, 7, 13));
 
         // Context toolbar (action buttons), populated per selection in UpdateToolbar().
         _toolbar = Ctl.Toolbar()
@@ -108,18 +109,19 @@ public sealed class AppManagerApp
         };
 
         _list = Ctl.List("Apps")
+            .WithBackgroundColor(Color.Transparent) // blend the left pane into the window gradient
             .OnSelectionChanged((_, idx) => OnSelect(idx))
             .Build();
         _list.HorizontalAlignment = HorizontalAlignment.Stretch;
         _list.VerticalAlignment = VerticalAlignment.Fill;
 
-        // Rich detail pane: HtmlControl renders the catalog's HTML. The app icon is a glyph header
-        // (catalog logos are SVG → not decodable), and the image protocol is auto-selected.
+        // Rich detail pane: HtmlControl renders the catalog's HTML. Transparent background so it
+        // blends into the window gradient (cx family look); foreground matches cxfiles panels.
         _detail = HtmlBuilder.Create()
             .WithContent("<p>Select an app.</p>")
             .WithShowImages(true)
-            .WithBackgroundColor(new Color(20, 25, 45))
-            .WithForegroundColor(new Color(220, 225, 235))
+            .WithBackgroundColor(Color.Transparent)
+            .WithForegroundColor(Color.Grey93)
             .WithLinkColor(new Color(120, 180, 255))
             .WithHorizontalAlignment(HorizontalAlignment.Stretch)
             .WithVerticalAlignment(VerticalAlignment.Fill)
