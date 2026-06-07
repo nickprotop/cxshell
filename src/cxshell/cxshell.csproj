@@ -14,6 +14,7 @@
     <ProjectReference Include="..\cxshell.FileManager\cxshell.FileManager.csproj" />
     <ProjectReference Include="..\cxshell.Terminal\cxshell.Terminal.csproj" />
     <ProjectReference Include="..\cxshell.Settings\cxshell.Settings.csproj" />
+    <ProjectReference Include="..\cxshell.AppManager\cxshell.AppManager.csproj" />
   </ItemGroup>
 
   <!-- Shared desktop chrome (start menu, panels, backgrounds) + settings persistence -->

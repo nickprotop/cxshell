@@ -8,6 +8,7 @@ using SharpConsoleUI.Layout;
 using SharpConsoleUI.Panel;
 using SharpConsoleUI.Windows;
 using Ctl = SharpConsoleUI.Builders.Controls;
+using cxshell.AppManager.App;
 using cxshell.Apps;
 using cxshell.Config;
 using cxshell.FileManager;
@@ -179,6 +180,7 @@ public class DesktopShell
         }, "Applications", 20);
 
         Register("Settings", () => SettingsWindow.Open(_windowSystem), "System", 10);
+        Register("App Manager", () => AppManagerApp.Open(_windowSystem), "System", 15);
         Register("Welcome", CreateWelcomeWindow, "System", 20);
 
         // Installed apps (baked + user/App-Manager), launched as external processes.
