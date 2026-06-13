@@ -16,7 +16,8 @@ public class CatalogTests
         Assert.Contains("org.dotos.lazydotide", ids);
         Assert.Contains("org.dotos.lazynuget", ids);
         Assert.Contains("org.dotos.serverhub", ids);
-        Assert.Equal(6, apps.Count);
+        Assert.Contains("org.dotos.lazycaddy", ids);
+        Assert.Equal(7, apps.Count);
     }
 
     [Fact]

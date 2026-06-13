@@ -105,6 +105,25 @@
           "uri": "source+git:https://github.com/nickprotop/ServerHub?ref=main",
           "build": { "steps": [ { "run": "dotnet publish ServerHub.csproj -c Release -o out --self-contained -r linux-{arch}" } ], "artifact": "out", "exe": "serverhub", "net": true } }
       ]
+    },
+    {
+      "id": "org.dotos.lazycaddy",
+      "name": "LazyCaddy",
+      "summary": "TUI dashboard for a running Caddy server",
+      "descriptionHtml": "<h2>LazyCaddy</h2><p>A read + edit TUI dashboard for a running Caddy server: inspect and manage your Caddy configuration, routes and topology from a fast keyboard-driven terminal UI.</p>",
+      "icon": "",
+      "logo": "https://raw.githubusercontent.com/nickprotop/lazycaddy/master/.github/logo.svg",
+      "categories": ["Network", "System", "Utility"],
+      "group": "System",
+      "order": 70,
+      "homepage": "https://github.com/nickprotop/lazycaddy",
+      "sources": [
+        { "kind": "binary", "label": "Prebuilt binary (installer)",
+          "uri": "binary+github-release:nickprotop/lazycaddy?installer=install.sh&uninstaller=uninstall.sh&exe=lazycaddy" },
+        { "kind": "source", "label": "Build from source",
+          "uri": "source+git:https://github.com/nickprotop/lazycaddy?ref=master",
+          "build": { "steps": [ { "run": "dotnet publish lazycaddy.csproj -c Release -o out --self-contained -r linux-{arch}" } ], "artifact": "out", "exe": "lazycaddy", "net": true } }
+      ]
     }
   ]
 }
