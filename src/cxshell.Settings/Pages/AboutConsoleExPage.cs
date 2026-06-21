@@ -13,7 +13,7 @@ public static class AboutConsoleExPage
         var driverType = windowSystem.ConsoleDriver.GetType().Name;
         var theme = windowSystem.ThemeStateService.CurrentTheme;
         var themeName = theme?.GetType().Name ?? "Unknown";
-        var themeCount = ThemeRegistry.Count;
+        var themeCount = windowSystem.ThemeRegistryService.Count;
         var animationCount = windowSystem.Animations.ActiveCount;
         var assemblyVersion = typeof(ConsoleWindowSystem).Assembly
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion
