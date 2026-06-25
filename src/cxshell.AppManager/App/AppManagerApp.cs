@@ -207,7 +207,6 @@ public sealed class AppManagerApp
             var (glyph, color) = Badge(v.Status);
             _list.AddItem(new ListItem(v.Entry.Name, glyph, color) { Tag = v.Entry.Id });
         }
-        _window.Invalidate(true);
     }
 
     private static (string glyph, Color color) Badge(AppStatus s) => s switch
@@ -245,12 +244,11 @@ public sealed class AppManagerApp
         _toolbar.Clear();
 
         var v = _selected;
-        if (v == null) { _window.Invalidate(true); return; }
+        if (v == null) { return; } // _toolbar.Clear() above already self-invalidates
 
         if (_busy)
         {
             AddToolbarButton("[grey50]working…[/]", () => { });
-            _window.Invalidate(true);
             return;
         }
 
@@ -282,7 +280,6 @@ public sealed class AppManagerApp
             AddToolbarButton("⊕ Homepage", () => { /* surfaced in the detail pane link */ });
         }
 
-        _window.Invalidate(true);
     }
 
     // --- Operations --------------------------------------------------------------------------
@@ -401,7 +398,6 @@ public sealed class AppManagerApp
     {
         // The homepage is the base URL so the catalog's relative image/screenshot paths resolve.
         _detail.SetContent(BuildDetailHtml(v), v.Entry.Homepage ?? "");
-        _window.Invalidate(true);
     }
 
     private static string BuildDetailHtml(AppView v)
@@ -446,7 +442,6 @@ public sealed class AppManagerApp
     {
         _statusLine.ClearLeft();
         _statusLine.AddLeftText(markup);
-        _window.Invalidate(true);
     }
 
     private void UpdateStatusLine()

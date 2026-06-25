@@ -132,7 +132,6 @@ public sealed class OperationProgressModal : ModalBase<bool>
                     _log.Append(p.Message, elapsed);
                     _logContent?.SetContent(_log.Snapshot());
                 }
-                Modal.Invalidate(true);
             }));
 
         try
@@ -189,7 +188,6 @@ public sealed class OperationProgressModal : ModalBase<bool>
 
             if (_button != null) _button.Text = "  Close (Esc)  ";
             Modal.IsClosable = true;
-            Modal.Invalidate(true);
         });
     }
 
